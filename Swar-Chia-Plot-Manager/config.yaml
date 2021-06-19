@@ -106,7 +106,7 @@ global:
   #                               multiple jobs from starting at the exact same time. This will alleviate congestion
   #                               on destination drive. Set to 0 to disable.
   max_concurrent: 16
-  max_for_phase_1: 4
+  max_for_phase_1: 1
   minimum_minutes_between_jobs: 1
 
 
@@ -183,14 +183,14 @@ jobs:
     destination_directory: G:\
     size: 32
     bitfield: true
-    threads: 8
+    threads: 20
     buckets: 128
     memory_buffer: 30000
     max_concurrent: 3
     max_concurrent_with_start_early: 4
     initial_delay_minutes: 0
     stagger_minutes: 2
-    max_for_phase_1: 2
+    max_for_phase_1: 1
     concurrency_start_early_phase: 4
     concurrency_start_early_phase_delay: 0
     temporary2_destination_sync: false
@@ -210,14 +210,14 @@ jobs:
     destination_directory: F:\
     size: 32
     bitfield: true
-    threads: 7
+    threads: 20
     buckets: 128
     memory_buffer: 30000
     max_concurrent: 3
     max_concurrent_with_start_early: 4
     initial_delay_minutes: 0
     stagger_minutes: 2
-    max_for_phase_1: 2
+    max_for_phase_1: 1
     concurrency_start_early_phase: 4
     concurrency_start_early_phase_delay: 0
     temporary2_destination_sync: false
