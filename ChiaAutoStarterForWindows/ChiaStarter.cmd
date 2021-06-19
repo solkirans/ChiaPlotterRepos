@@ -1,0 +1,2 @@
+PowerShell -Command "Set-ExecutionPolicy Unrestricted" >> "C:\ChiaPlotterRepos\Logs\StartupLog.txt" 2>&1
+PowerShell C:\ChiaPlotterRepos\ChiaAutoStarterForWindows\AutoStarter.ps1 >> "C:\ChiaPlotterRepos\Logs\StartupLog.txt" 2>&1
