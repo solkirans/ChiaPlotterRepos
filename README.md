@@ -11,7 +11,7 @@ $TEMPDisks = @("TEMPDISK_1", "TEMPDISK_2", "TEMPDISK_3")
 
 Ornegin;
 
-$TEMPDisks = @("D:\", "G:\")
+$TEMPDisks = @("D:\\", "G:\\")
 
 duzenlemeyi kaydedip dosyayi bu konuma kopyalayin;
 
