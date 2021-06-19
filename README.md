@@ -13,8 +13,4 @@ Swar REPO: https://github.com/swar/Swar-Chia-Plot-Manager/pull/1198
 
 python manager.py view
 
-Diger LOGLAR:
-
-\ChiaPlotterRepos\LOGS
-
-icerisinde diger log dosyalari gorulebilir
+4) \ChiaPlotterRepos\LOGS icerisinde diger log dosyalari gorulebilir
