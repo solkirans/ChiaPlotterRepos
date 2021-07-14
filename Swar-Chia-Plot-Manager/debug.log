@@ -1,0 +1,131 @@
+2021-07-01 09:23:19 [ERROR]: Drive "D:" does not have enough space. This directory will be skipped.
+2021-07-01 09:23:20 [ERROR]: Job "MDISK" has no more destination directories with enough space for more work.
+2021-07-01 09:38:32 [ERROR]: Drive "D:" does not have enough space. This directory will be skipped.
+2021-07-01 09:38:32 [ERROR]: Job "EDISK" has no more destination directories with enough space for more work.
+2021-07-01 15:58:21 [ERROR]: Drive "D:" does not have enough space. This directory will be skipped.
+2021-07-01 15:58:21 [ERROR]: Job "MDISK" has no more destination directories with enough space for more work.
+2021-07-01 15:59:21 [ERROR]: Drive "D:" does not have enough space. This directory will be skipped.
+2021-07-01 15:59:21 [ERROR]: Job "EDISK" has no more destination directories with enough space for more work.
+2021-07-03 21:53:19 [ERROR]: Drive "H:" does not have enough space. This directory will be skipped.
+2021-07-03 21:53:19 [ERROR]: Job "EDISK" has no more destination directories with enough space for more work.
+2021-07-03 22:14:57 [ERROR]: Drive "H:" does not have enough space. This directory will be skipped.
+2021-07-03 22:14:57 [ERROR]: Job "MDISK" has no more destination directories with enough space for more work.
+2021-07-06 09:00:15 [ERROR]: Drive "H:" does not have enough space. This directory will be skipped.
+2021-07-06 09:00:15 [ERROR]: Job "MDISK" has no more destination directories with enough space for more work.
+2021-07-06 09:01:16 [ERROR]: Drive "H:" does not have enough space. This directory will be skipped.
+2021-07-06 09:01:16 [ERROR]: Job "EDISK" has no more destination directories with enough space for more work.
+2021-07-07 18:59:56 [ERROR]: Failed to get disk_usage of drive None.
+Traceback (most recent call last):
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 173, in monitor_jobs_to_start
+    free_space = psutil.disk_usage(drive).free
+  File "C:\Python37\lib\site-packages\psutil\__init__.py", line 1995, in disk_usage
+    return _psplatform.disk_usage(path)
+  File "C:\Python37\lib\site-packages\psutil\_pswindows.py", line 265, in disk_usage
+    total, free = cext.disk_usage(path)
+TypeError: argument 1 must be str, not None
+Traceback (most recent call last):
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\stateless-manager.py", line 106, in <module>
+    backend=backend,
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 263, in monitor_jobs_to_start
+    backend=backend,
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 285, in start_work
+    get_target_directories(job, drives_free_space=drives_free_space)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 26, in get_target_directories
+    job = check_valid_destinations(job, drives_free_space)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 53, in check_valid_destinations
+    drive = identify_drive(file_path=directory, drives=drives)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\processes.py", line 162, in identify_drive
+    if drive not in file_path:
+TypeError: 'in <string>' requires string as left operand, not NoneType
+2021-07-07 19:01:07 [ERROR]: Failed to get disk_usage of drive None.
+Traceback (most recent call last):
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 173, in monitor_jobs_to_start
+    free_space = psutil.disk_usage(drive).free
+  File "C:\Python37\lib\site-packages\psutil\__init__.py", line 1995, in disk_usage
+    return _psplatform.disk_usage(path)
+  File "C:\Python37\lib\site-packages\psutil\_pswindows.py", line 265, in disk_usage
+    total, free = cext.disk_usage(path)
+TypeError: argument 1 must be str, not None
+Traceback (most recent call last):
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\stateless-manager.py", line 106, in <module>
+    backend=backend,
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 263, in monitor_jobs_to_start
+    backend=backend,
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 285, in start_work
+    get_target_directories(job, drives_free_space=drives_free_space)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 26, in get_target_directories
+    job = check_valid_destinations(job, drives_free_space)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 53, in check_valid_destinations
+    drive = identify_drive(file_path=directory, drives=drives)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\processes.py", line 162, in identify_drive
+    if drive not in file_path:
+TypeError: 'in <string>' requires string as left operand, not NoneType
+2021-07-14 10:16:19 [ERROR]: Failed to get disk_usage of drive None.
+Traceback (most recent call last):
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 173, in monitor_jobs_to_start
+    free_space = psutil.disk_usage(drive).free
+  File "C:\Python37\lib\site-packages\psutil\__init__.py", line 1995, in disk_usage
+    return _psplatform.disk_usage(path)
+  File "C:\Python37\lib\site-packages\psutil\_pswindows.py", line 265, in disk_usage
+    total, free = cext.disk_usage(path)
+TypeError: argument 1 must be str, not None
+Traceback (most recent call last):
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\stateless-manager.py", line 106, in <module>
+    backend=backend,
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 263, in monitor_jobs_to_start
+    backend=backend,
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 285, in start_work
+    get_target_directories(job, drives_free_space=drives_free_space)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 26, in get_target_directories
+    job = check_valid_destinations(job, drives_free_space)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 53, in check_valid_destinations
+    drive = identify_drive(file_path=directory, drives=drives)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\processes.py", line 162, in identify_drive
+    if drive not in file_path:
+TypeError: 'in <string>' requires string as left operand, not NoneType
+2021-07-14 10:20:45 [ERROR]: Failed to get disk_usage of drive None.
+Traceback (most recent call last):
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 173, in monitor_jobs_to_start
+    free_space = psutil.disk_usage(drive).free
+  File "C:\Python37\lib\site-packages\psutil\__init__.py", line 1995, in disk_usage
+    return _psplatform.disk_usage(path)
+  File "C:\Python37\lib\site-packages\psutil\_pswindows.py", line 265, in disk_usage
+    total, free = cext.disk_usage(path)
+TypeError: argument 1 must be str, not None
+Traceback (most recent call last):
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\stateless-manager.py", line 106, in <module>
+    backend=backend,
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 263, in monitor_jobs_to_start
+    backend=backend,
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 285, in start_work
+    get_target_directories(job, drives_free_space=drives_free_space)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 26, in get_target_directories
+    job = check_valid_destinations(job, drives_free_space)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 53, in check_valid_destinations
+    drive = identify_drive(file_path=directory, drives=drives)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\processes.py", line 162, in identify_drive
+    if drive not in file_path:
+TypeError: 'in <string>' requires string as left operand, not NoneType
+2021-07-14 10:25:31 [ERROR]: Failed to get disk_usage of drive None.
+Traceback (most recent call last):
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 173, in monitor_jobs_to_start
+    free_space = psutil.disk_usage(drive).free
+  File "C:\Python37\lib\site-packages\psutil\__init__.py", line 1995, in disk_usage
+    return _psplatform.disk_usage(path)
+  File "C:\Python37\lib\site-packages\psutil\_pswindows.py", line 265, in disk_usage
+    total, free = cext.disk_usage(path)
+TypeError: argument 1 must be str, not None
+Traceback (most recent call last):
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\stateless-manager.py", line 106, in <module>
+    backend=backend,
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 263, in monitor_jobs_to_start
+    backend=backend,
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 285, in start_work
+    get_target_directories(job, drives_free_space=drives_free_space)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 26, in get_target_directories
+    job = check_valid_destinations(job, drives_free_space)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\jobs.py", line 53, in check_valid_destinations
+    drive = identify_drive(file_path=directory, drives=drives)
+  File "C:\ChiaPlotterRepos\Swar-Chia-Plot-Manager\plotmanager\library\utilities\processes.py", line 162, in identify_drive
+    if drive not in file_path:
+TypeError: 'in <string>' requires string as left operand, not NoneType
