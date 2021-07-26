@@ -5,6 +5,11 @@
 #  LINUX2 EXAMPLE: /home/swar/chia-blockchain/venv/bin/chia
 #  MAC OS EXAMPLE: /Applications/Chia.app/Contents/Resources/app.asar.unpacked/daemon/chia
 chia_location: C:\ChiaPlotterRepos\madMaxPlotter\chia_plot.exe
+
+# This variable defines which plotter binary you're using. It can be one of the following options:
+#
+# - chia (default if none provided)
+# - madmax
 backend: madmax
 
 manager:
@@ -13,7 +18,7 @@ manager:
   # check_interval: The number of seconds to wait before checking to see if a new job should start.
   #      log_level: Keep this on ERROR to only record when there are errors. Change this to INFO in order to see more
   #                 detailed logging. Warning: INFO will write a lot of information.
-  check_interval: 5
+  check_interval: 10
   log_level: ERROR
 
 
@@ -33,7 +38,7 @@ view:
   #               include_cpu: This dictates whether the CPU information will be showed.
   #               include_ram: This dictates whether the RAM information will be showed.
   #        include_plot_stats: This dictates whether the plot stats will be showed.
-  check_interval: 5
+  check_interval: 10
   datetime_format: "%Y-%m-%d %H:%M:%S"
   include_seconds_for_phase: false
   include_drive_info: true
@@ -86,6 +91,16 @@ progress:
   #                 information with the existing log file to calculate a progress percent.
   #   phase_weight: These are the weight to assign to each phase in the progress calculations. Typically, Phase 1 and 3
   #                 are the longest phases so they will hold more weight than the others.
+  #
+  # If you're using "madmax" backend, you should use the following config instead:
+  # phase1_line_end: 20
+  # phase2_line_end: 34
+  # phase3_line_end: 48
+  # phase4_line_end: 53
+  # phase1_weight: 33.4
+  # phase2_weight: 20.43
+  # phase3_weight: 42.29
+  # phase4_weight: 3.88
   phase1_line_end: 20
   phase2_line_end: 34
   phase3_line_end: 48
@@ -124,7 +139,9 @@ jobs:
   # [OPTIONAL] farmer_public_key: Your farmer public key. If none is provided, it will not pass in this variable to the
   #                               chia executable which results in your default keys being used. This is only needed if
   #                               you have chia set up on a machine that does not have your credentials.
-  # [OPTIONAL] pool_public_key: Your pool public key. Same information as the above.
+  # [OPTIONAL] pool_public_key: Your pool public key. DONT Use IF YOU ARE USING A POOL CONTRACT ADDRESS! Othewise same information as above.
+  #
+  # [OPTIONAL] pool_contract_address:  Your Pool's Contract Address. Refer to https://github.com/Chia-Network/chia-blockchain/wiki/Pooling-FAQ#how-do-i-assign-portable-plots-to-a-pool
   #
   # temporary_directory: Can be a single value or a list of values. This is where the plotting will take place. If you
   #                      provide a list, it will cycle through each drive one by one.
@@ -133,12 +150,16 @@ jobs:
   # destination_directory: Can be a single value or a list of values. This is the final directory where the plot will be
   #                        transferred once it is completed. If you provide a list, it will cycle through each drive
   #                        one by one.
+  #    *** MadMax requires trailing '/' on directories! ***
   #
   # size: This refers to the k size of the plot. You would type in something like 32, 33, 34, 35... in here.
   # bitfield: This refers to whether you want to use bitfield or not in your plotting. Typically, you want to keep
   #           this as true.
-  # threads: This is the number of threads that will be assigned to the plotter. Only phase 1 uses more than 1 thread.
-  # buckets: The number of buckets to use. The default provided by Chia is 128.
+  # threads: This is the number of threads that will be assigned to the plotter. Chia only uses more than 1 thread in phase 1.
+  #           Madmax is multithreaded.
+  # [OPTIONAL] threadX_p2: [madmax only] This is a *MULTIPLIER* (integer) for the number of threads the madmax plotter will use for phase 2. Blank defaults to 1.
+  # buckets: The number of buckets to use. The default provided by Chia is 128. (applies to phases 1 and 2 in madmax when used in conjunction with 'buckets_p3' parameter)
+  # [OPTIONAL] buckets_p3: [madmax only] The number of buckets to use in Phases 3 (and 4). Leave blank to use the same value for all phases (from 'buckets' parameter, default 128)
   # memory_buffer: The amount of memory you want to allocate to the process.
   # max_concurrent: The maximum number of plots to have for this job at any given time.
   # max_concurrent_with_start_early: The maximum number of plots to have for this job at any given time including
@@ -174,22 +195,24 @@ jobs:
   #        cpu_affinity: List of cpu (or threads) to allocate for plot processes. The default example assumes you have
   #                      a hyper-threaded 4 core CPU (8 logical cores). This config will restrict plot processes to use
   #                      logical cores 0-5, leaving logical cores 6 and 7 for other processes (6 restricted, 2 free).
-  - name: MDISK
+  - name: ONE
     max_plots: 999
     farmer_public_key: 82028d2a9f353b58edd53b4e096497a9eccb3085d7ed17a01f1c08a63b619d82450bfb4bbee2297772d1a1a1c388de72
-    pool_public_key: a215f5fb469ac2857dd7d7eed3aeb847f70a9133f9d110bd461c71f8ae73dc3440ca42014319a1d04d6c129fbb4a0a4d
+    pool_contract_address: xch1g286wjun4g35uxt4aw8j847tp3h7qx7qkyak3n32r0w9de24m6aqescv9w
     temporary_directory: M:\
     temporary2_directory:
     destination_directory: G:\
     size: 32
     bitfield: true
     threads: 20
+    threadX_p2:
     buckets: 128
+    buckets_p3:
     memory_buffer: 30000
     max_concurrent: 1
     max_concurrent_with_start_early: 4
     initial_delay_minutes: 0
-    stagger_minutes: 2
+    stagger_minutes: 1
     max_for_phase_1: 1
     concurrency_start_early_phase: 4
     concurrency_start_early_phase_delay: 0
@@ -201,22 +224,24 @@ jobs:
     enable_cpu_affinity: false
     cpu_affinity: [ 0, 1, 2, 3, 4, 5 ]
 
-  - name: EDISK
+- name: TWO
     max_plots: 999
     farmer_public_key: 82028d2a9f353b58edd53b4e096497a9eccb3085d7ed17a01f1c08a63b619d82450bfb4bbee2297772d1a1a1c388de72
-    pool_public_key: a215f5fb469ac2857dd7d7eed3aeb847f70a9133f9d110bd461c71f8ae73dc3440ca42014319a1d04d6c129fbb4a0a4d
+    pool_contract_address: xch1g286wjun4g35uxt4aw8j847tp3h7qx7qkyak3n32r0w9de24m6aqescv9w
     temporary_directory: E:\
     temporary2_directory:
     destination_directory: F:\
     size: 32
     bitfield: true
     threads: 20
+    threadX_p2:
     buckets: 128
+    buckets_p3:
     memory_buffer: 30000
     max_concurrent: 1
     max_concurrent_with_start_early: 4
     initial_delay_minutes: 0
-    stagger_minutes: 2
+    stagger_minutes: 1
     max_for_phase_1: 1
     concurrency_start_early_phase: 4
     concurrency_start_early_phase_delay: 0
